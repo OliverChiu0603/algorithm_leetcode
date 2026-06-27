@@ -6,4 +6,9 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(algorithm main.cpp
         util.h
         leetcode/21.h
-        leetcode/86.h)
+        leetcode/86.h
+        leetcode/23.h
+        leetcode/19.h
+        leetcode/876.h
+        leetcode/142.h
+        leetcode/141.h)
