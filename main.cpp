@@ -3,10 +3,12 @@
 #include "leetcode/19.h"
 #include "leetcode/21.h"
 #include "leetcode/23.h"
+#include "leetcode/82.h"
 #include "leetcode/86.h"
+#include "leetcode/378.h"
 #include "leetcode/876.h"
 
 int main() {
-    leetcode876::test();
+    leetcode378::test();
     return 0;
 }

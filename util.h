@@ -103,6 +103,15 @@ inline ListNode *deserializeList(const std::string &data) {
     return dummy.next;
 }
 
+// 把形如 "[1,2,3]" 的字符串解析成一维数组；兼容空白字符，"[]" 解析为空数组。
+inline std::vector<int> deserializeArray(const std::string &data) {
+    std::vector<int> nums;
+    for (const std::string &value: util_detail::splitValues(data)) {
+        nums.push_back(std::stoi(value));
+    }
+    return nums;
+}
+
 inline std::string serializeTree(const TreeNode *root) {
     if (root == nullptr) {
         return "[]";
@@ -170,6 +179,60 @@ inline TreeNode *deserializeTree(const std::string &data) {
     }
 
     return root;
+}
+
+// 把二维矩阵序列化成形如 "[[1,5,9],[10,11,13],[12,13,15]]" 的字符串。
+inline std::string serializeMatrix(const std::vector<std::vector<int>> &matrix) {
+    std::string result = "[";
+    for (std::size_t i = 0; i < matrix.size(); ++i) {
+        if (i > 0) {
+            result += ",";
+        }
+        result += "[";
+        for (std::size_t j = 0; j < matrix[i].size(); ++j) {
+            if (j > 0) {
+                result += ",";
+            }
+            result += std::to_string(matrix[i][j]);
+        }
+        result += "]";
+    }
+    result += "]";
+    return result;
+}
+
+// 把形如 "[[1,5,9],[10,11,13],[12,13,15]]" 的字符串解析回二维矩阵。
+// 兼容空白字符；"[]" 解析为空矩阵，"[[]]" 解析为含一个空行的矩阵。
+inline std::vector<std::vector<int>> deserializeMatrix(const std::string &data) {
+    std::string s = util_detail::trim(data);
+    // 去掉最外层的方括号，剩下若干个 "[...]" 行（行之间以逗号分隔）。
+    if (!s.empty() && s.front() == '[') {
+        s.erase(s.begin());
+    }
+    if (!s.empty() && s.back() == ']') {
+        s.pop_back();
+    }
+
+    std::vector<std::vector<int>> matrix;
+    std::string row;
+    bool inRow = false;
+    for (char c: s) {
+        if (c == '[') {
+            row.clear();
+            inRow = true;
+        } else if (c == ']') {
+            inRow = false;
+            std::vector<int> nums;
+            for (const std::string &token: util_detail::splitValues(row)) {
+                nums.push_back(std::stoi(token));
+            }
+            matrix.push_back(nums);
+        } else if (inRow) {
+            row += c;
+        }
+        // 行与行之间的逗号、空白字符等都被忽略。
+    }
+    return matrix;
 }
 
 namespace util_detail {
