@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake 配置",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "..",
+                "-G", "Visual Studio 18 2026",
+                "-A", "x64",
+                "-DCMAKE_GENERATOR_INSTANCE=C:/Program Files/Microsoft Visual Studio/18/Community"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "创建 build 目录"
+            ]
+        },
+        {
+            "label": "创建 build 目录",
+            "type": "shell",
+            "command": "mkdir",
+            "args": [
+                "-Force",
+                "${workspaceFolder}/build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "CMake 编译",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build", ".",
+                "--config", "Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "dependsOn": [
+                "CMake 配置"
+            ]
+        },
+        {
+            "label": "运行",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/Debug/algorithm.exe",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "CMake 编译"
+            ],
+            "presentation": {
+                "reveal": "always"
+            }
+        }
+    ]
+}
