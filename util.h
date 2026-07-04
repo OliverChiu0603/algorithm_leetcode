@@ -5,9 +5,11 @@
 #ifndef ALGORITHM_UTIL_H
 #define ALGORITHM_UTIL_H
 
+#include <algorithm>
 #include <array>
 #include <cctype>
 #include <deque>
+#include <iomanip>
 #include <iostream>
 #include <list>
 #include <map>
@@ -249,6 +251,9 @@ namespace util_detail {
     void printValue(const std::vector<T> &value);
 
     template<typename T>
+    void printValue(const std::vector<std::vector<T>> &matrix);
+
+    template<typename T>
     void printValue(const std::deque<T> &value);
 
     template<typename T>
@@ -333,6 +338,44 @@ namespace util_detail {
     template<typename T>
     void printValue(const std::vector<T> &value) {
         printSequence(value);
+    }
+
+    template<typename T>
+    void printValue(const std::vector<std::vector<T>> &matrix) {
+        if (matrix.empty()) {
+            std::cout << "[]";
+            return;
+        }
+
+        std::size_t columnCount = 0;
+        for (const auto &row: matrix) {
+            columnCount = std::max(columnCount, row.size());
+        }
+
+        std::vector<std::size_t> columnWidths(columnCount, 0);
+        std::vector<std::vector<std::string>> values(matrix.size());
+        for (std::size_t i = 0; i < matrix.size(); ++i) {
+            for (std::size_t j = 0; j < matrix[i].size(); ++j) {
+                std::ostringstream out;
+                out << matrix[i][j];
+                values[i].push_back(out.str());
+                columnWidths[j] = std::max(columnWidths[j], values[i].back().size());
+            }
+        }
+
+        for (std::size_t i = 0; i < values.size(); ++i) {
+            if (i > 0) {
+                std::cout << '\n';
+            }
+            std::cout << "[";
+            for (std::size_t j = 0; j < values[i].size(); ++j) {
+                if (j > 0) {
+                    std::cout << ",";
+                }
+                std::cout << std::setw(static_cast<int>(columnWidths[j])) << values[i][j];
+            }
+            std::cout << "]";
+        }
     }
 
     template<typename T>

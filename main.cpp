@@ -27,12 +27,14 @@
 #include "leetcode/234.h"
 #include "leetcode/283.h"
 #include "leetcode/287.h"
+#include "leetcode/303.h"
+#include "leetcode/304.h"
 #include "leetcode/373.h"
 #include "leetcode/378.h"
 #include "leetcode/445.h"
 #include "leetcode/876.h"
 
 int main() {
-    leetcode15::test();
+    leetcode304::test();
     return 0;
 }
