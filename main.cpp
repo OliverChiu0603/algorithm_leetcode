@@ -14,6 +14,7 @@
 #include "leetcode/54.h"
 #include "leetcode/59.h"
 #include "leetcode/61.h"
+#include "leetcode/76.h"
 #include "leetcode/80.h"
 #include "leetcode/82.h"
 #include "leetcode/83.h"
@@ -32,9 +33,10 @@
 #include "leetcode/373.h"
 #include "leetcode/378.h"
 #include "leetcode/445.h"
+#include "leetcode/567.h"
 #include "leetcode/876.h"
 
 int main() {
-    leetcode304::test();
+    leetcode567::test();
     return 0;
 }

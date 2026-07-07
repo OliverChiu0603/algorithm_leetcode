@@ -44,4 +44,6 @@ add_executable(algorithm main.cpp
         leetcode/1.h
         leetcode/15.h
         leetcode/303.h
-        leetcode/304.h)
+        leetcode/304.h
+        leetcode/76.h
+        leetcode/567.h)
