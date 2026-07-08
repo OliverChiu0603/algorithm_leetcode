@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "leetcode/2.h"
+#include "leetcode/3.h"
 #include "leetcode/5.h"
 #include "leetcode/14.h"
 #include "leetcode/15.h"
@@ -33,11 +34,13 @@
 #include "leetcode/370.h"
 #include "leetcode/373.h"
 #include "leetcode/378.h"
+#include "leetcode/438.h"
 #include "leetcode/445.h"
 #include "leetcode/567.h"
 #include "leetcode/876.h"
+#include "leetcode/1658.h"
 
 int main() {
-    leetcode370::test();
+    leetcode1658::test();
     return 0;
 }
