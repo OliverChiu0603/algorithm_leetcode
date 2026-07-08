@@ -30,6 +30,7 @@
 #include "leetcode/287.h"
 #include "leetcode/303.h"
 #include "leetcode/304.h"
+#include "leetcode/370.h"
 #include "leetcode/373.h"
 #include "leetcode/378.h"
 #include "leetcode/445.h"
@@ -37,6 +38,6 @@
 #include "leetcode/876.h"
 
 int main() {
-    leetcode567::test();
+    leetcode370::test();
     return 0;
 }
