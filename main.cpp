@@ -26,6 +26,8 @@
 #include "leetcode/151.h"
 #include "leetcode/167.h"
 #include "leetcode/206.h"
+#include "leetcode/209.h"
+#include "leetcode/220.h"
 #include "leetcode/234.h"
 #include "leetcode/283.h"
 #include "leetcode/287.h"
@@ -34,13 +36,17 @@
 #include "leetcode/370.h"
 #include "leetcode/373.h"
 #include "leetcode/378.h"
+#include "leetcode/395.h"
+#include "leetcode/424.h"
 #include "leetcode/438.h"
 #include "leetcode/445.h"
 #include "leetcode/567.h"
+#include "leetcode/713.h"
 #include "leetcode/876.h"
+#include "leetcode/1004.h"
 #include "leetcode/1658.h"
 
 int main() {
-    leetcode1658::test();
+    leetcode395::test();
     return 0;
 }
