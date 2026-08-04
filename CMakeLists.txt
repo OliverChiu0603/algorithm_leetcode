@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.20)
 project(algorithm)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -63,4 +63,8 @@ add_executable(algorithm main.cpp
         leetcode/704.h
         leetcode/34.h
         leetcode/875.h
-        leetcode/1011.h)
+        leetcode/1011.h
+        leetcode/410.h
+        leetcode/566.h
+        leetcode/74.h
+        leetcode/240.h)
